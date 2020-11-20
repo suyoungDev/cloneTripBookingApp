@@ -15,12 +15,9 @@ const Container = styled.View`
   flex: 1;
   background: ${COLORS.white};
 `;
-
 const Title = styled.View`
   flex: 1;
-  margin-top: ${SIZES.base}px;
-  padding-left: ${SIZES.padding}px;
-  padding-right: ${SIZES.padding}px;
+  margin: ${SIZES.padding}px;
 `;
 const Contents = styled.View`
   flex: 1;
@@ -29,7 +26,7 @@ const Contents = styled.View`
 `;
 const Row = styled.View`
   flex-direction: row;
-  margin-top: ${SIZES.padding}px;
+  margin-top: ${SIZES.base}px;
   padding-left: ${SIZES.base}px;
   padding-right: ${SIZES.base}px;
 `;
@@ -39,15 +36,15 @@ const Button = styled.TouchableOpacity`
   justify-content: center;
 `;
 const IconWrapper = styled.View`
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
 `;
 const Label = styled.Text`
-  margin-top: ${SIZES.base}px;
+  margin-top: ${SIZES.base / 2}px;
   color: ${COLORS.gray};
 `;
 
-
+// 아이콘 모듈
 const OptionItem = ({icon, bgColor, label, onPress}) => {
   return(
     <Button onPress={onPress}>
@@ -74,7 +71,63 @@ const OptionItem = ({icon, bgColor, label, onPress}) => {
   )
 }
 
-const Home = () =>{
+const Home = ({navigation}) =>{
+
+  // Dummy Data
+  const [destinations, setDestinations] = React.useState([
+    {
+      id: 0,
+      name: 'Ksi Villa',
+      img: images.skiVilla,
+    },
+    {
+      id: 1,
+      name: 'Climbing Hills',
+      img: images.climbingHills,
+    },
+    {
+      id: 2,
+      name: 'Frozen Hills',
+      img: images.frozenHills,
+    },
+    {
+      id: 3,
+      name: 'beach',
+      img: images.beach,
+    }
+  ])
+
+
+  // Destination Render Module
+  function renderDestinations(item, index){
+    var destinationStyle = {};
+    if (index == 0){
+      destinationStyle={marginLeft: SIZES.padding};
+    }
+
+    return(
+      <TouchableOpacity
+        style={{ justifyContent:'center', marginHorizontal: SIZES.base,
+            ...destinationStyle}}
+        onPress={() => {}}
+      >
+        <Image 
+          source={item.img}
+          resizeMode='cover'
+          style={{
+            width: SIZES.width * 0.28,
+            height: '82%',
+            borderRadius: 15
+          }}
+        />
+
+        <Text style={{marginTop: SIZES.base/2, marginBottom: SIZES.base, ...FONTS.h4 }}>{item.name}</Text>
+      </TouchableOpacity>
+    )
+  }
+
+
+  
   return (
     <Container>
      {/* Banner  */}
@@ -99,11 +152,72 @@ const Home = () =>{
             label="Flight"
             onPress={()=>{console.log('Flight');}}
           />
+          <OptionItem 
+            icon={icons.train}
+            bgColor={['#fddf90', '#fcda13']}
+            label='Train'
+            onPress={()=>{}}
+          />
+           <OptionItem 
+            icon={icons.bus}
+            bgColor={['#e973ad', '#da5df2']}
+            label='Bus'
+            onPress={()=>{}}
+          />
+           <OptionItem 
+            icon={icons.taxi}
+            bgColor={['#fcaba8', '#fe6bba']}
+            label='Taxi'
+            onPress={()=>{}}
+          />
+        </Row>
+
+        <Row>
+          <OptionItem 
+            icon={icons.bed}
+            bgColor={['#46aeff', '#5884ff']}
+            label="Bed"
+            onPress={()=>{console.log('Flight');}}
+          />
+          <OptionItem 
+            icon={icons.eat}
+            bgColor={['#fddf90', '#fcda13']}
+            label='Eats'
+            onPress={()=>{}}
+          />
+           <OptionItem 
+            icon={icons.compass}
+            bgColor={['#e973ad', '#da5df2']}
+            label='Adventure'
+            onPress={()=>{}}
+          />
+           <OptionItem 
+            icon={icons.event}
+            bgColor={['#fcaba8', '#fe6bba']}
+            label='Event'
+            onPress={()=>{}}
+          />
         </Row>
       </Contents>
 
      {/* Destination */}
-     <Contents></Contents>
+     <View style={{flex: 1.4}}>
+        <Text style={{
+          marginTop: SIZES.base * 2.5,
+          marginBottom: SIZES.base,
+          marginHorizontal: SIZES.padding, 
+          ...FONTS.h2}}
+        >
+            Destination
+        </Text>
+        <FlatList 
+          horizontal
+          showsHorizontalScrollIndicator ={false}
+          data={destinations}
+          keyExtractor={item =>item.id.toString()}
+          renderItem={({item, index}) => renderDestinations(item, index)}
+        />
+     </View>
     </Container>
   )
 }
