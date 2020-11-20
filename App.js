@@ -61,6 +61,42 @@ const App = () =>{
         <Stack.Screen 
           name="Home"
           component={Tabs}
+          options={{
+            title: null,
+            headerStyle:{
+              backgroundColor: COLORS.white
+            },
+            headerLeft: ({onPress}) => (
+              <TouchableOpacity
+                style={{marginLeft: SIZES.padding}}
+                onPress={onPress}
+              >
+              <Image 
+                source={icons.back}
+                resizeMode='contain'
+                style={{
+                  width: 25,
+                  height: 25
+                }}
+              />
+              </TouchableOpacity>
+            ),
+            headerRight: () => (
+              <TouchableOpacity
+                style={{marginRight: SIZES.padding}}
+                onPress={ () => console.log('pressed')}
+              >
+                <Image 
+                  source={icons.menu}
+                  resizeMode='contain'
+                  style={{
+                    width:25,
+                    height:25,
+                  }}
+                />
+              </TouchableOpacity>
+            )
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
