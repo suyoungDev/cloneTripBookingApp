@@ -10,12 +10,13 @@ const Container = styled.View`
 `;
 const Box = styled.View`
   flex: ${props => props.flex};
-  background: ${props => props.color};
 `
 const Row = styled.View`
   flex-direction: row;
 `;
 
+
+// 별점 모듈 구현
 const StarReview = ({rate}) => {
   let starComponents = [];
   let fullStar = Math.floor(rate);
@@ -76,12 +77,30 @@ const StarReview = ({rate}) => {
 }
 
 
+// 아이콘 모듈
+const IconLabel = ({icon, label}) => {
+  return(
+    <View style={{alignItems: 'center'}}>
+      <Image 
+        source={icon}
+        resizeMode='cover'
+        style={{width:50, height:50}}
+      />
+      <Text style={{
+        marginTop:SIZES.base, 
+        color: COLORS.gray, 
+        ...FONTS.body3}}>{label}</Text>
+    </View>
+  )
+}
+
+
 const DestinationDetail = () =>{
   return (
     <Container>
       
       {/* Header */}
-      <Box flex={2} color={'#fab1a0'}>
+      <Box flex={2}>
         <Image 
           source={images.skiVillaBanner}
           resizeMode='cover'
@@ -181,7 +200,6 @@ const DestinationDetail = () =>{
                   height: 30
                 }}
               />
-
             </TouchableOpacity>
           </View>
           
@@ -189,12 +207,40 @@ const DestinationDetail = () =>{
       </Box>
 
       {/* Body */}
-      <Box  flex={1.5} color={'#ff7675'}>
-        
+      <Box  flex={1.5}>
+        {/* Icons */}
+        <View style={{
+          flexDirection: 'row', 
+          marginTop: SIZES.base, 
+          paddingHorizontal: SIZES.padding*2, 
+          justifyContent: 'space-between'
+          }}
+        >
+          <IconLabel 
+            icon={icons.villa}
+            label='Villa'
+          />
+          <IconLabel 
+            icon={icons.parking}
+            label='Parking'
+          />
+          <IconLabel 
+            icon={icons.wind}
+            label='4 C'
+          />
+        </View>
+
+        {/* About */}
+        <View style={{marginTop: SIZES.padding, paddingHorizontal: SIZES.padding}}>
+          <Text style={{...FONTS.h2}}>About</Text>
+          <Text style={{marginTop: SIZES.radius, color: COLORS.gray, ...FONTS.body3}}>
+            Located at the alps with an altitude of 1,702 meters. The ski are fun to enjoy!
+          </Text>
+        </View>
       </Box>
 
       {/* Footer */}
-      <Box  flex={0.5} color={'#fab1a0'}>
+      <Box  flex={0.5}>
 
       </Box>
     </Container>
