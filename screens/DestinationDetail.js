@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import styled from 'styled-components';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants/';
@@ -205,7 +206,7 @@ const DestinationDetail = () =>{
           
         </View>
       </Box>
-
+      {/* End of Header */}
       {/* Body */}
       <Box  flex={1.5}>
         {/* Icons */}
@@ -238,10 +239,39 @@ const DestinationDetail = () =>{
           </Text>
         </View>
       </Box>
+      {/* End of Body */}
 
       {/* Footer */}
-      <Box  flex={0.5}>
-
+      <Box flex={0.5} style={{paddingHorizontal: SIZES.padding}}>
+          <LinearGradient
+            style={{height: 70, width: '100%', borderRadius:15}}
+            colors={['#edf0fc', '#d6dfff']}
+            start={{x:0, y:0}}
+            end={{x:1, y:0}}
+          >
+            <View style={{flex:1, flexDirection:'row', alignItems:'center'}}>
+              <View style={{flex:1, marginHorizontal: SIZES.padding, justifyContent:'center'}}>
+                <Text style={{...FONTS.h1}}>$1000</Text>
+              </View>
+              <TouchableOpacity
+                style={{width: 130, height: '80%', marginHorizontal: SIZES.radius}}
+                onPress={()=>{}}
+              >
+                <LinearGradient
+                  style={{
+                    flex:1, 
+                    alignItems:'center',
+                    justifyContent: 'center', 
+                    borderRadius: 10}}
+                  colors={['#46aeff', '#5884ff']}
+                  start={{x:0, y:0}}
+                  end={{x:1, y:0}}
+                >
+                  <Text style={{...FONTS.h3, color: COLORS.white}}>BOOKING</Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+          </LinearGradient>
       </Box>
     </Container>
   )
