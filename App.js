@@ -57,6 +57,12 @@ const App = () =>{
           }}
         />
 
+        <Stack.Screen 
+          name="DestinationDetail"
+          component={DestinationDetail}
+          options={{ headerShown: false}}
+        />
+
         {/* tabs */}
         <Stack.Screen 
           name="Home"

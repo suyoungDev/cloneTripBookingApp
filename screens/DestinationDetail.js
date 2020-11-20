@@ -4,7 +4,7 @@ import {View, Text} from 'react-native';
 const DestinationDetail = () =>{
   return (
     <View>
-      <Text>DestinationDetail</Text>
+      <Text>Destination Detail</Text>
     </View>
   )
 }
