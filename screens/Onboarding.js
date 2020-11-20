@@ -28,7 +28,7 @@ const ClickButton = styled.TouchableOpacity`
   justify-content: center;
 `;
 
-const Onboarding = () =>{
+const Onboarding = ({navigation}) =>{
   return (
     <Container>
       <ImageView>
@@ -53,6 +53,7 @@ const Onboarding = () =>{
             backgroundColor: '#46aeff', 
             height: '100%', width: '100%', 
             elevation: 1, borderRadius: 15}}
+            onPress={()=>navigation.navigate('Home')}
         >
           <LinearGradient
             style={{ 
@@ -63,7 +64,7 @@ const Onboarding = () =>{
             satrt={{x:0, y:0}}
             end={{x:1, y:1}}
           >
-          <Text style={{color: COLORS.white, ...FONTS.h3, letterSpacing: 2}}>start!</Text>
+          <Text style={{color: COLORS.white, ...FONTS.h3, letterSpacing: 2}}>Start!</Text>
           </LinearGradient>
         </TouchableOpacity>
       </ClickButton>

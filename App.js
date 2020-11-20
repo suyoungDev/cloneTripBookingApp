@@ -5,10 +5,14 @@ import {
 } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { icons, COLORS, SIZES } from './constants';
 
 // Screens
 import {Onboarding, DestinationDetail } from './screens/';
-import { icons, COLORS, SIZES } from './constants';
+
+// Tabs
+import Tabs from './navigation/tabs';
+
 
 const theme = {
   ...DefaultTheme,
@@ -38,7 +42,7 @@ const App = () =>{
             headerLeft: null,
             headerRight: () => (
               <TouchableOpacity style={{ marginRight: SIZES.padding }}
-                onPress={() => console.log('pressed')}
+                onPress={() => navigation.navigate('Home')}
               >
                 <Image 
                   source={icons.barMenu}
@@ -51,6 +55,12 @@ const App = () =>{
               </TouchableOpacity>
             )
           }}
+        />
+
+        {/* tabs */}
+        <Stack.Screen 
+          name="Home"
+          component={Tabs}
         />
       </Stack.Navigator>
     </NavigationContainer>
