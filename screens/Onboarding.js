@@ -52,7 +52,7 @@ const Onboarding = ({navigation}) =>{
           style={{
             backgroundColor: '#46aeff', 
             height: '100%', width: '100%', 
-            elevation: 1, borderRadius: 15}}
+            elevation: 3, borderRadius: 15}}
             onPress={()=>navigation.navigate('Home')}
         >
           <LinearGradient
@@ -72,11 +72,5 @@ const Onboarding = ({navigation}) =>{
     </Container>
   )
 };
-
-const styles = StyleSheet.create({
-  shadow:{
-    elevation: 10,
-  }
-})
 
 export default Onboarding;
