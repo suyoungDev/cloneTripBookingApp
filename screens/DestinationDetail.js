@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import styled from 'styled-components';
 import {COLORS, FONTS, icons, images, SIZES} from '../constants/';
 
@@ -114,6 +115,7 @@ const DestinationDetail = () =>{
               />
             </View>
 
+            {/* Reivew */}
             <View style={{ 
               marginHorizontal: SIZES.radius,
               justifyContent: 'space-around'
@@ -122,13 +124,67 @@ const DestinationDetail = () =>{
               <Text style={{...FONTS.h3}}>Ski Villa</Text>
               <Text style={{color: COLORS.gray, ...FONTS.body3}}>France</Text>
               
-              
-              {/* Module */}
+              {/* Rivew Module */}
               <StarReview 
-                rate={1.5}
+                rate={4.5}
               />
             </View>
           </Row>
+          
+          {/* Review Description */}
+          <View style={{marginTop: SIZES.radius}}>
+              <Text style={{color: COLORS.gray, ...FONTS.body3}}>
+                Ski villa offers simple rooms with mountain views in front Ski resort.
+              </Text>
+          </View>
+        </View>
+
+
+        {/* Header Button */}
+        {/* Back and Menu Button */}
+        <View
+          style={{
+            position: 'absolute',
+            top: 20,
+            left: 20,
+            right: 20,
+            flexDirection: 'row'
+          }}
+        >
+          <View
+            style={{flex: 1}}
+          >
+            <TouchableOpacity
+              onPress={()=>{}}
+            >
+              <Image 
+                source={icons.back}
+                resizeMode='cover'
+                style={{
+                  width: 30,
+                  height: 30,
+                }}
+              />
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{flex: 1, alignItems: 'flex-end'}}
+          >
+            <TouchableOpacity
+              onPress={()=>{}}
+            >
+              <Image 
+                source={icons.menu}
+                resizeMode='cover'
+                style={{
+                  width: 30,
+                  height: 30
+                }}
+              />
+
+            </TouchableOpacity>
+          </View>
+          
         </View>
       </Box>
 
